@@ -5,39 +5,44 @@ void spiralPrint(int a[][100], int m, int n)
 {
     int startRow = 0;
     int startCol = 0;
-    int endRow = m-1;
-    int endCol = n-1;
-    
+    int endRow = m - 1;
+    int endCol = n - 1;
+
     cout << "The spiral print of the array is: " << endl;
 
     // Printing the array
-    while((startRow <= endRow) && (startCol <= endCol))
+    while ((startRow <= endRow) && (startCol <= endCol))
     {
-        for(int i = startCol; i <= endCol; i++)
+        for (int i = startCol; i <= endCol; i++)
         {
             cout << a[startRow][i] << " ";
         }
         startRow++;
 
-        for(int i = startRow; i <= endRow; i++)
+        for (int i = startRow; i <= endRow; i++)
         {
             cout << a[i][endCol] << " ";
         }
         endCol--;
 
-        for(int i = endCol; i >= startCol; i--)
+        if (startRow < endRow)
         {
-            cout << a[endRow][i] << " ";
+            for (int i = endCol; i >= startCol; i--)
+            {
+                cout << a[endRow][i] << " ";
+            }
+            endRow--;
         }
-        endRow--;
 
-        for(int i = endRow; i >= startRow; i--)
+        if (startCol < endCol)
         {
-            cout << a[i][startCol] << " ";
+            for (int i = endRow; i >= startRow; i--)
+            {
+                cout << a[i][startCol] << " ";
+            }
+            startCol++;
         }
-        startCol++;
     }
-
 }
 
 int main()
